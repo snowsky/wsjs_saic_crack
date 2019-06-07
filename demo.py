@@ -183,8 +183,8 @@ class Demo(object):
         html = HTML(response.content)
 
         keys = ("申请/注册号", "业务名称", "环节名称", "结论", "日期")
-        for table in html.cssselect(".lcbg table"):
-            values = [td.xpath("string()") for td in table.cssselect("td")]
+        for table in html.xpath("//*[@class='lcbg']//table"):
+            values = [td.xpath("string()") for td in table.xpath(".//td")]
             print(dict(zip(keys, values)))
 
 
